@@ -36,7 +36,6 @@
         </div>
       </div>
     </nav>
-
     <!-- dropdown menu User Profile -->
     <!-- Dropdown menu -->
     <div
@@ -48,7 +47,7 @@
         aria-labelledby="dropdownDefaultButton"
       >
           <a
-            href="#"
+            href="{{ route('logoutaksi') }}"
             class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
             >Sign out</a
           >
@@ -191,90 +190,85 @@
     <!-- card Items Hosting-->
     <div class="md:grid md:grid-cols-3">
         @foreach($post as $posts)
-        @if($posts->id_jenis===1)
-      <div class="py-4 px-2 flex justify-center">
+        @if($posts->id_jenis==1)
 
-        <div
-          class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
-        >
-          <div class="flex justify-between px-4 pt-4">
-            <span
-              class="text-lg truncate cursor-pointer"
-              data-tooltip-target="tooltip-top-{{ $posts->id }}"
-              data-tooltip-placement="top"
-              >
-              {{ $posts->name }}
-            </span>
-            <div
-              id="tooltip-top-{{ $posts->id }}"
-              role="tooltip"
-              class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-            >
-              {{ $posts->name }}
-              <div class="tooltip-arrow" data-popper-arrow></div>
-            </div>
-            <button
-              id="dropdownButton"
-              data-dropdown-toggle="dropdown{{ $posts->id }}"
-              class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
-              type="button"
-            >
-              <span class="sr-only">Open dropdown</span>
-              <svg
-                class="w-5 h-5"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 3"
-              >
-                <path
-                  d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
-                />
-              </svg>
-            </button>
-            <!-- Dropdown menu -->
-            <div
-              id="dropdown{{ $posts->id }}"
-              class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-            >
-              <ul class="py-2" aria-labelledby="dropdownButton">
-                <li>
 
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    data-modal-target="editLink-modal{{ $posts->id }}"
-                    data-modal-toggle="editLink-modal{{ $posts->id }}"
-                    >Edit</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                    data-modal-target="popup-modalDelete{{ $posts->id }}"
-                    data-modal-toggle="popup-modalDelete{{ $posts->id }}"
-                    >Delete</a
-                  >
-                </li>
-              </ul>
-            </div>
-          </div>
-          <a class="cursor-pointer" onclick="myFunction{{ $posts->id }}()">
-                <p
-                class="truncate px-4 py-4 hover:text-blue-400 ease-in-out duration-300 hover:underline-offset-4"
+    <div class="py-4 px-2 flex justify-center">
+            <div
+            class="w-full max-w-sm h-[60px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="flex justify-between px-4 pt-4">
+
+                <span
+                class="text-lg truncate cursor-pointer"
+                data-tooltip-target="tooltip-top-{{ $posts->id }}"
+                data-tooltip-placement="top"
+                onclick="location.href='{{ $posts->url }}'"
                 >
-                {{ $posts->url }}
-            </p>
-         </a>
-         <script>
-          function myFunction{{ $posts->id }}() {
-            location.href = "{{ $posts->url }}";
-          }
-          </script>
+                {{ $posts->name }}
+                </span>
+                <div
+                id="tooltip-top-{{ $posts->id }}"
+                role="tooltip"
+                class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+                >
+                {{ $posts->name }}
+                <div class="tooltip-arrow" data-popper-arrow></div>
+                </div>
+                <button
+                id="dropdownButton"
+                data-dropdown-toggle="dropdown{{ $posts->id }}"
+                class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+                type="button"
+                >
+                <span class="sr-only">Open dropdown</span>
+                <svg
+                    class="w-5 h-5"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 16 3"
+                >
+                    <path
+                    d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
+                    />
+                </svg>
+                </button>
+                <!-- Dropdown menu -->
+                <div
+                id="dropdown{{ $posts->id }}"
+                class="z-10 hidden text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+                >
+                <ul class="py-2" aria-labelledby="dropdownButton">
+                    <li>
 
-        </div>
-      </div>
+                    <a
+                        href="#"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        data-modal-target="editLink-modal{{ $posts->id }}"
+                        data-modal-toggle="editLink-modal{{ $posts->id }}"
+                        >Edit</a
+                    >
+                    </li>
+                    <li>
+                    <a
+                        href="#"
+                        class="block px-4 py-2 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                        data-modal-target="popup-modalDelete{{ $posts->id }}"
+                        data-modal-toggle="popup-modalDelete{{ $posts->id }}"
+                        >Delete</a
+                    >
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <script>
+            function myFunction{{ $posts->id }}() {
+                location.href = "{{ $posts->url }}";
+            }
+            </script>
+            </div>
+    </div>
+
       @endif
         @endforeach()
 
@@ -290,7 +284,7 @@
     <!-- card Items  Kicak -->
     <div class="md:grid md:grid-cols-3">
     @foreach($post as $posts)
-    @if($posts->id_jenis === 2)
+    @if($posts->id_jenis == 2)
       <div class="py-4 px-2 flex justify-center">
         <div
           class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
