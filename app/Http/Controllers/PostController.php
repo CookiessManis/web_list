@@ -25,7 +25,7 @@ class PostController extends Controller
 
         Post::create($request->all());
 
-        return redirect()->route('posts.index')->with('success','Link Website Berhasil Ditambahkan');
+        return redirect()->route('posts')->with('success','Link Website Berhasil Ditambahkan');
     }
 
 
@@ -39,13 +39,13 @@ class PostController extends Controller
 
         Post::find($id)->update($request->all());
 
-        return redirect()->route('posts.index')->with('success','Link Website Berhasil Di Ubah');
+        return redirect()->route('posts')->with('success','Link Website Berhasil Di Ubah');
     }
 
     public function destroy($id){
           //fungsi eloquent untuk menghapus data
         Post::find($id)->delete();
-        return redirect()->route('posts.index')
+        return redirect()->route('posts')
             ->with('success', 'Link Website Berhasil Dihapus');
     }
 }

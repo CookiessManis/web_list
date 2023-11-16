@@ -19,162 +19,16 @@
             <span class="self-center text-2xl font-semibold whitespace-nowrap ">Satuan Polisi Pamong Praja</span>
         </a>
         <div class="flex items-center space-x-6 rtl:space-x-reverse">
-
-            <img src="{{ asset('img/profile.svg') }}" class="h-12 cursor-pointer fill-white" id="dropdownDefaultButton" data-dropdown-toggle="dropdown">
-
+            <p class="font-semibold text-black text-2xl font-serif">TAMU</p>
         </div>
-
-
-
-<!-- Dropdown menu -->
-<div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefaultButton">
-    <a href="{{ route('logoutaksi') }}" class="text-lg py-2  text-slate-600 dark:text-slate-600 no-underline hover:text-slate-500">
-        <li class="pl-5">
-            Log Out
-        </li>
-    </a>
-
-    </ul>
-</div>
 
     </div>
 </nav>
 
-     @if ($message = Session::get('success'))
-
-        <div class="bg-black px-9 py-4  mx-auto rounded-md " id="show">
-         <p class="text-center text-white text-base">{{ $message }}</p>
-        </div>
-    @endif
-
-    <!-- button plus -->
-    <div class="flex justify-end">
-      <div class="px-4 pt-4">
-        <div
-          class="px-6 py-4 bg-blue-500 rounded-xl text-white shadow-lg cursor-pointer md:text-lg text-sm"
-          data-modal-target="tambahLink-modal"
-          data-modal-toggle="tambahLink-modal"
-        >
-          Tambah Link
-        </div>
-      </div>
-    </div>
-
-    <!-- modal tambah link -->
-    <!-- Main modal -->
-    <div
-      id="tambahLink-modal"
-      tabindex="-1"
-      aria-hidden="true"
-      class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
-    >
-      <div class="relative w-full max-w-md max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <button
-            type="button"
-            class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-            data-modal-hide="tambahLink-modal"
-          >
-            <svg
-              class="w-3 h-3"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 14 14"
-            >
-              <path
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-              />
-            </svg>
-            <span class="sr-only">Close modal</span>
-          </button>
-          <div class="px-6 py-6 lg:px-8">
-            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">
-              Tambah Link Website
-            </h3>
-            <form class="space-y-6" method="post" action="{{ route('posts.store') }}">
-                @csrf
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >Nama Website</label
-                >
-                <input
-                  type="text"
-                  name="name"
-                  id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="Nama Website"
-                  required
-                />
-              </div>
-              <div>
-                <label
-                  for="email"
-                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >URL / Link Website</label
-                >
-                <input
-                  type="text"
-                  name="url"
-                  id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
-                  placeholder="https://contohWebsite.com"
-                  required
-                />
-              </div>
-
-              <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Jenis Website</label
-              >
-              <select
-                id="small"
-                name="id_jenis"
-                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              >
-              @foreach($jenis as $jns)
-                <option value="{{ $jns->id }}">{{ $jns->jenis}}</option>
-                @endforeach()
-
-              </select>
-              <button
-                type="submit"
-                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Tambah Website
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- end modal tambah link -->
-
-    <!-- header -->
-    <div class="px-3 pt-4">
-      <p class="flex">
-        Website Hosting
-        <span class="px-3"
-          ><img src="img/hosting.svg" width="35" alt=""
-        /></span>
-      </p>
-    </div>
-    <!-- end header -->
-
     <!-- card Items Hosting-->
     <div class="md:grid md:grid-cols-3">
         @foreach($post as $posts)
+        @if($posts->id_jenis==2)
 
 
     <div class="py-4 px-2 flex justify-center">
@@ -198,25 +52,7 @@
                 {{ $posts->name }}
                 <div class="tooltip-arrow" data-popper-arrow></div>
                 </div>
-                <button
-                id="dropdownButton"
-                data-dropdown-toggle="dropdown{{ $posts->id }}"
-                class="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
-                type="button"
-                >
-                <span class="sr-only">Open dropdown</span>
-                <svg
-                    class="w-5 h-5"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 16 3"
-                >
-                    <path
-                    d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"
-                    />
-                </svg>
-                </button>
+
                 <!-- Dropdown menu -->
                 <div
                 id="dropdown{{ $posts->id }}"
@@ -253,6 +89,7 @@
             </div>
     </div>
 
+      @endif
         @endforeach()
 
     </div>
@@ -349,7 +186,6 @@
               >
                 Ubah Website
               </button>
-
             </form>
           </div>
         </div>
@@ -442,12 +278,6 @@
       crossorigin="anonymous"
     ></script>
 
-     <script>
-      $("#show").show();
-      setTimeout(function () {
-        $("#show").hide();
-      }, 3000);
-    </script>
 
         <!-- script flowbite -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.8.1/flowbite.min.js"></script>

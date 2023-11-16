@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Halaman Login</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-gradient-to-r from-slate-200 to-cyan-100">
     <div class="py-10">
@@ -27,7 +27,7 @@
           <div class="w-[32%] hidden md:block">
             <div class="w-full">
               <img src="img/logo.svg" class="w-full h-full" alt="" />
-              <p class="text-center text-lg font-semibold leading-tight">Kelola Website Satpol PP</p>
+              <p class="text-center text-lg font-semibold leading-tight py-5 ">Kelola Website Satpol PP</p>
             </div>
           </div>
           <div class="w-[100%] md:w-[70%]">
@@ -81,6 +81,9 @@
                 >
                   Masuk
                 </button>
+                 <div class="py-4 text-end">
+                    <button class="rounded-lg py-3 px-5 bg-yellow-400" onclick="location.href='{{ route('tamu') }}'">Masuk Sebagai Tamu</button>
+                 </div>
               </div>
               </form>
             </div>
